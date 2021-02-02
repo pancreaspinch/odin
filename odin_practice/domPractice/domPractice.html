@@ -1,0 +1,59 @@
+<body>
+  <h1>
+    THE TITLE OF YOUR WEBPAGE
+  </h1>
+  <div id="container">
+    <button id="btn">Click Me Too</button>
+  </div>
+</body>
+
+<script>
+const container = document.querySelector('#container');
+
+const content = document.createElement('div');
+content.classList.add('content');
+content.textContent = 'This is the glorious text-content!';
+
+const redText = document.createElement('p');
+redText.classList.add('redText');
+redText.textContent = 'Hey, I\'m red!';
+redText.style.color = "red";
+
+const blueText = document.createElement('h3');
+blueText.classList.add('blueText');
+blueText.textContent = 'I\'m a blue h3!';
+blueText.style.color = "blue";
+
+const blackContent = document.createElement('div');
+blackContent.classList.add('blackContent');
+blackContent.style.backgroundColor = "pink";
+blackContent.style.border = "thick solid black"
+
+const blackH1 = document.createElement('h1');
+blackH1.classList.add('blackH1');
+blackH1.textContent = 'I\'m another div';
+
+const blackP = document.createElement('p');
+blackP.classList.add('blackP');
+blackP.textContent = "Me Too!";
+
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', () => {
+  alert("Hello World");
+});
+
+btn.addEventListener('click', function (e) {
+  console.log(e);
+});
+btn.addEventListener('click', function (e) {
+  e.target.style.background = 'blue';
+});
+
+
+
+content.appendChild(blueText);
+content.appendChild(redText);
+blackContent.appendChild(blackH1)
+container.appendChild(content);
+container.appendChild(blackContent);
+</script>
