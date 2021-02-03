@@ -1,88 +1,92 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Page Title</title>
-  <meta charset="UTF-8"/>
+    <title>Rock Paper Scissors</title>
+    <meta charset="UTF-8" />
 </head>
+
 <body>
-    <div id = "buttons">
-        <button id = "rock">Rock</button>
-        <button id = "paper">Paper</button>
-        <button id = "scissors">Scissors</button>
+    <div id="buttons">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
     </div>
-    <div id = "scores">
+    <div id="scores">
         <!--DOM score methods here-->
-        
+
     </div>
-  <script>
-  
-    let playerScore = 0;
-    let cpuScore = 0;
-       
-   function computerPlay(){
-      let selector =  Math.floor(Math.random()*3);
-      if(selector == 0){
-          return "rock";
-      }
-      else if(selector == 1){
-          return "paper";
-      }
-      else{
-          return "scissors";
-      }
-   }
-   
-   function playRound(playerSelection, computerSelection) {
-        playerSelection = playerSelection.toLowerCase();
-            if(playerSelection == computerSelection){
+    <script>
+
+        let playerScore = 0;
+        let cpuScore = 0;
+
+        function computerPlay() {
+            let selector = Math.floor(Math.random() * 3);
+            if (selector == 0) {
+                return "rock";
+            }
+            else if (selector == 1) {
+                return "paper";
+            }
+            else {
+                return "scissors";
+            }
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+            if (playerSelection == computerSelection) {
                 return console.log("Twas a tie.");
-            } else if(
+            } else if (
                 (playerSelection == "rock" && computerSelection == "paper") ||
                 (playerSelection == "paper" && computerSelection == "scissors") ||
                 (playerSelection == "scissors" && computerSelection == "rock")
-                ) {
-                    cpuScore++;
-                    return console.log("You Lost!");
-                } else if(
-                    (playerSelection == "rock" && computerSelection == "scissors") ||
-                    (playerSelection == "paper" && computerSelection == "rock") ||
-                    (playerSelection == "scissors" && computerSelection == "paper")
-                    ) {
-                    playerScore++;    
-                    return console.log("You Won!");
-                } else{
-                    return console.log("Please enter a valid value.");
-                }
-            
-   }
-   
-   function resetScore(){
-       playerScore = 0;
-       cpuScore = 0;
-   }
-   function game(){
-      // for(var i = 0; i<5; i++){
-           let playerSelection = prompt("Rock, Paper, or Scissors?");
-           playRound(playerSelection, computerPlay());
-           console.log("Player score: " + playerScore + " CPU score: " + cpuScore);
-       //}
-       resetScore();
-       if(playerScore > cpuScore){
-           console.log("Congrats you won.");
-       } else if( playerScore < cpuScore){
-           console.log("Unfortunate you lost.");
-       }else{
-           console.log("Twas a tie.");
-       }
-   }
-   
-   //Button event listeners
-   const buttons = document.querySelectorAll('button');
-   buttons.forEach((button) => {
-       button.addEventListener('click', () => {
-           playRound(button.id, computerPlay());
-       });
-   })
-  </script>
+            ) {
+                cpuScore++;
+                return console.log("You Lost!");
+            } else if (
+                (playerSelection == "rock" && computerSelection == "scissors") ||
+                (playerSelection == "paper" && computerSelection == "rock") ||
+                (playerSelection == "scissors" && computerSelection == "paper")
+            ) {
+                playerScore++;
+                return console.log("You Won!");
+            } else {
+                return console.log("Please enter a valid value.");
+            }
+
+        }
+
+        function resetScore() {
+            playerScore = 0;
+            cpuScore = 0;
+        }
+        function game() {
+            // for(var i = 0; i<5; i++){
+            let playerSelection = prompt("Rock, Paper, or Scissors?");
+            playRound(playerSelection, computerPlay());
+            console.log("Player score: " + playerScore + " CPU score: " + cpuScore);
+            //}
+            resetScore();
+            if (playerScore > cpuScore) {
+                console.log("Congrats you won.");
+            } else if (playerScore < cpuScore) {
+                console.log("Unfortunate you lost.");
+            } else {
+                console.log("Twas a tie.");
+            }
+        }
+
+        //Button event listeners
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                playRound(button.id, computerPlay());
+            });
+        })
+        const scores = document.getElementById("scores");
+    </script>
 </body>
+
 </html>
